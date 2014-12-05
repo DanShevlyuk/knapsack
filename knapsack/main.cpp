@@ -23,7 +23,7 @@ int main(int argc, const char * argv[]) {
     knapsack ks;
     
     
-    cout << ks.dynamic_knapsack(items, 6, 10);
+    cout << ks.greedy_knapsack(items, 6, 10);
     
     
     

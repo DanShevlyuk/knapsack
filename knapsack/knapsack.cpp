@@ -80,14 +80,14 @@ int** knapsack::make_matrix_for_dynamic(int n, int capacity) {
 }
 
 
-//============== end of backtracking knapsack =================
+//============== end of dynamic knapsack =================
 
 
 
 //============== backtracking knapsack =================
 
-//#pragma mark - backtracking knapsack
-//
+#pragma mark - backtracking knapsack
+
 //virtual int backtrack_knapsack(item* items, int n, int capacity) {
 //    
 //}
@@ -97,3 +97,45 @@ int** knapsack::make_matrix_for_dynamic(int n, int capacity) {
 //}
 
 //============== end of backtracking knapsack =================
+
+//================== greedy knapsack ======================
+
+#pragma mark - greedy knapsack
+int knapsack::greedy_knapsack(item* items, int n, int capacity) {
+    
+    sort_items_by_priority(items, n, capacity);
+    
+    
+    int res = 0;
+    int maxCost = 0;
+    for (int i = n - 1; i >= 0; i--) {
+        if (res + items[i].weight <= capacity) {
+            res += items[i].weight;
+            maxCost += items[i].cost;
+        }
+    }
+    
+    return maxCost;
+}
+
+void knapsack::sort_items_by_priority(item* items, int n, int capacity) {
+    
+    int increment;
+    item temp;
+    int j;
+    
+    for (increment = n / 2; increment > 0; increment /= 2) {
+        for (int i = increment; i < n; i++) {
+            temp = items[i];
+            for (j = i; j >= increment; j -= increment) {
+                if (temp.cost / temp.weight < items[j - increment].cost / items[j - increment].weight) {
+                    items[j] = items[j - increment];
+                } else {
+                    break;
+                }
+            }
+            items[j] = temp;
+        }
+    }
+}
+//===================end of greedy knapsack ================

@@ -85,7 +85,7 @@ public:
 		TIP: it's not brute-force search, google "backtracking" if you are
 		confused.
 	*/
-	//virtual int backtrack_knapsack(item* items, int n, int capacity);
+//	virtual int backtrack_knapsack(item* items, int n, int capacity);
 
 	/*
 		Method to call knapsack algorthm via backtracking
@@ -97,7 +97,7 @@ public:
 		Returns: approximate (but deterministic) maximum possible sum of items
 		in the knapsack. (!!!)
 	*/
-	//virtual int greedy_knapsack(item* items, int n, int capacity);
+	virtual int greedy_knapsack(item* items, int n, int capacity);
 
 protected:
 	/* Items for knapsack */
@@ -187,7 +187,7 @@ protected:
 		weights less or equally to (capacity - current_weight))
 
 	*/
-//	virtual int backtracking_recursive_call(int current_item, int current_weight, int current_cost, int capacity);
+	//virtual int backtracking_recursive_call(int current_item, int current_weight, int current_cost, int capacity);
 
 	/* === Methods for greedy knapsack === */
 
@@ -199,5 +199,5 @@ protected:
 		Time: not more than O(n*log n)
 		Space: depends on the sorting algorithm that you gonna choose.
 	*/
-	//virtual void sort_items_by_priority(item* items, int n, int capacity);
+	virtual void sort_items_by_priority(item* items, int n, int capacity);
 };
