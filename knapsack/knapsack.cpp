@@ -11,8 +11,6 @@
 
 //============== dynamic knapsack =================
 
-#pragma mark - dynamic knapsack
-
 void print_matrix(int **matrix, int n, int k) {
     for (int i = 0; i < n; i ++) {
         for (int j = 0; j < k; j++) {
@@ -86,21 +84,32 @@ int** knapsack::make_matrix_for_dynamic(int n, int capacity) {
 
 //============== backtracking knapsack =================
 
-#pragma mark - backtracking knapsack
+int knapsack::backtrack_knapsack(item* items, int n, int capacity) {
+    
+    this->items = items;
+    this->n = n;
+    
+    return backtracking_recursive_call(0, 0, 0, capacity);
+}
 
-//virtual int backtrack_knapsack(item* items, int n, int capacity) {
-//    
-//}
-//
-//virtual int backtracking_recursive_call(int current_item, int current_weight, int current_cost, int capacity) {
-//    
-//}
+int knapsack::backtracking_recursive_call(int current_item, int current_weight, int current_cost, int capacity) {
+    
+    if (current_item < n && (current_weight + items[current_item].weight) <= capacity) {
+        int a = backtracking_recursive_call(current_item + 1, current_weight, current_cost, capacity);
+        int b = backtracking_recursive_call(current_item + 1, current_weight + items[current_item].weight,
+                                               current_cost + items[current_item].cost, capacity);
+        
+        return max(a, b);
+    } else {
+        return current_cost;
+    }
+}
 
 //============== end of backtracking knapsack =================
 
 //================== greedy knapsack ======================
 
-#pragma mark - greedy knapsack
+
 int knapsack::greedy_knapsack(item* items, int n, int capacity) {
     
     sort_items_by_priority(items, n, capacity);

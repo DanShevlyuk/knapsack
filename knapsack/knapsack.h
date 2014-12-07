@@ -85,7 +85,7 @@ public:
 		TIP: it's not brute-force search, google "backtracking" if you are
 		confused.
 	*/
-//	virtual int backtrack_knapsack(item* items, int n, int capacity);
+	virtual int backtrack_knapsack(item* items, int n, int capacity);
 
 	/*
 		Method to call knapsack algorthm via backtracking
@@ -187,7 +187,7 @@ protected:
 		weights less or equally to (capacity - current_weight))
 
 	*/
-	//virtual int backtracking_recursive_call(int current_item, int current_weight, int current_cost, int capacity);
+	virtual int backtracking_recursive_call(int current_item, int current_weight, int current_cost, int capacity);
 
 	/* === Methods for greedy knapsack === */
 
